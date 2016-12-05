@@ -4,6 +4,7 @@ Population dynamics of Mycobacterium tuberculosis within hosts during treatment.
 Repo to be updated soon.
 
 ## Project structure
+```
 ├── LICENSE
 ├── README.md
 ├── data
@@ -48,3 +49,4 @@ Repo to be updated soon.
         ├── parse_ART_simulations.py
         ├── parse_single_colony.py
         └── serial_functions.py
+```
