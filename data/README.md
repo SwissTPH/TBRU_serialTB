@@ -14,7 +14,7 @@ External data were obtained and reformatted from the following sources:
 - List of H37Rv genes containing antigens. Coscolla _et al._ doi:10.1016/j.chom.2015.10.008
 - List of H37Rv genes conferring drug resistance. Walker _et al._ doi: 10.1016/S1473-3099(15)00062-6
 - List of H37Rv genes associated with drug resistance. Farhat _et al._ doi: 10.1038/ng.2747
-- List of H37Rv genes associated with drug resistance. Zhang _et al._ doi:
+- List of H37Rv genes associated with drug resistance. Zhang _et al._ doi: 10.1038/ng.2735
 - List of H37Rv genes included in the Mycolate superpathway. O'Neill _et al._ doi:10.1371/journal.ppat.1005257
 
 ## Interim data
