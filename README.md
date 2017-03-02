@@ -24,7 +24,7 @@ Our findings show that for a pathogen like _M. tuberculosis_, which is well adap
 ├── LICENSE
 ├── README.md
 ├── data #This is just a place-holder. All data available from Zenodo
-│   ├── DATA_README.md #See this file for a better description
+│   ├── README.md #See this file for a better description
 │   ├── external
 │   ├── interim
 │   ├── processed
