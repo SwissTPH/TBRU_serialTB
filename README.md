@@ -1,8 +1,11 @@
 # TBRU_serialTB
 Population dynamics of _Mycobacterium tuberculosis_ populations within hosts during treatment.
 
+
+[![DOI](https://zenodo.org/badge/75634041.svg)](https://zenodo.org/badge/latestdoi/75634041)
+
 The data pertinent to the analyses can be on zenodo, with DOI-references:
-10.5281/zenodo.322377
+[![DOI](https://www.zenodo.org/badge/DOI/10.5281/zenodo.322377.svg)](https://doi.org/10.5281/zenodo.322377)
 
 ### The study was performed by:
 Andrej Trauner\*, Qingyun Liu\*, Laura E. Via, Xin Liu, Xianglin Ruan, Lili Liang, Huimin Shi, Ying Chen, Ziling Wang, Ruixia Liang, Wei Zhang, Wang Wei, Jingcai Gao，Gang Sun, Daniela Brites, Kathleen England, Guolong Zhang, Sebastien Gagneux, Clifton E. Barry III, Qian Gao
