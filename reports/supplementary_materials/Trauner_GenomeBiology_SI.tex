@@ -26,8 +26,10 @@
 
 \usepackage{booktabs}% http://ctan.org/pkg/booktabs
 \newcommand{\ti}{~~\llap{-}~~}
-\renewcommand{\figurename}{Supplementary Figure}
-\renewcommand{\tablename}{Supplementary Table}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
 
 \title{The within-host population dynamics of \textsl{Mycobacterium tuberculosis} vary with treatment efficacy. \\\ \large Supplementary Material}
 \author[1,2,a]{Andrej Trauner}
@@ -164,7 +166,7 @@
 
 \begin{table}[H]
    \centering
-   \topcaption[\textbf{Variations in the number of detected f-SNPs in patients at each time point is consistent with v-SNP dynamics.}]{Numbers in bold indicate increases in detected f-SNPs, while those in italics represent a decrease in f-SNPs. All gains of f-SNPs can be attributed to sweeps within populations - see \textbf{Supplementary Figure 9}} % requires the topcapt package
+   \topcaption[\textbf{Variations in the number of detected f-SNPs in patients at each time point is consistent with v-SNP dynamics.}]{Numbers in bold indicate increases in detected f-SNPs, while those in italics represent a decrease in f-SNPs. All gains of f-SNPs can be attributed to sweeps within populations - see \textbf{Figure S9}} % requires the topcapt package
    \begin{tabular}{@{} lcccccc @{}} % Column formatting, @{} suppresses leading/trailing space
       \toprule
      % \multicolumn{3}{r}{Sequencing} \\
@@ -224,7 +226,7 @@
 %\noindent \textsl{This text provides supplementary material pertinent to: \textbf{Efficacious combination therapy minimizes positive selection of antibiotic resistance.}}
 
 \section{Effect of treatment}
-Antibiotic treatment results in the decrease of bacterial populations within patients. Sputa from our patients were routinely used to inoculate Mycobacterial Growth Indicator Tubes (MGIT). The protocol for inoculation requires a standardisation of bacterial input based on optical density. As a result we used changes in time to culture positivity as a proxy for the decrease in the size of the bacterial population within the host. We used Mixed model linear regression to quantify the impact of treatment efficacy on bacterial burden. We saw clear differences in the treatment composition, with patients receiving at least four effective drugs (4+ drugs) reducing their bacterial burdens more effectively; see \textbf{Supplementary Figure 1}.
+Antibiotic treatment results in the decrease of bacterial populations within patients. Sputa from our patients were routinely used to inoculate Mycobacterial Growth Indicator Tubes (MGIT). The protocol for inoculation requires a standardisation of bacterial input based on optical density. As a result we used changes in time to culture positivity as a proxy for the decrease in the size of the bacterial population within the host. We used Mixed model linear regression to quantify the impact of treatment efficacy on bacterial burden. We saw clear differences in the treatment composition, with patients receiving at least four effective drugs (4+ drugs) reducing their bacterial burdens more effectively; see \textbf{Figure S1}.
 
 \begin{figure}
 \label{fig:supfig1}
@@ -284,12 +286,12 @@ The methodology for the determination of minor variants within populations is cu
 
 We started by addressing the techincal limitations first. Within our analytical pipeline we already account for poor base and mapping quality, and remove data that do not fit our criteria. The issue we still had to address is the identification of spurious variants that carry the profile of legitimate variants. To this end we used ART \cite{ART} to generate synthetic reads carrying the error profile of our sequencing data (derived with the ``\textsl{art\_profiler\_illumina}'' toolkit). We used the genome of \textsl{M. tuberculosis} strain H37Rv (GenBank: AL123456) as the template to simulate 500 sequencing runs with an average genome coverage of 1000-fold. Our expectation was that any minor variants to occur from this approach would be purely due to technical limitations and we should therefore devise a filtering step to remove all of them.
 
-We analysed the outputs by mapping them to the genome of \textsl{M. tuberculosis} strain CCDC5079 (GenBank: CP001641) and calling the variants as for our patient samples. We found that each simulation generated approximately 25 v-SNPs. The distribution of frequencies and coverages at each variable locus was multimodal showing a great amount of variation. Filtering for repetitive regions and read-end bias simplified the frequency distribution and gave rise to a leptokurtic distribution with a very strong positive skew with all the variants occuring below the frequency of 1\%. The coverage distribution was similarly simplified, resulting in a gaussian distribution, centered around 860-fold coverage. By exploring the relationship between variant frequency and read coverage for filtered v-SNPs resulting from simulation (see \textbf{Supplementary Figure 2}) we observed that all variation fell on discrete integer error lines. This is a clear indication that the addition of an empirical frequency cut-off would greatly reduce platform-specific spurious minor variants. Specifically introducing a frequency cut-off of 1\% would remove all minor variants resulting from sequencing errors in the coverage range we have within our study.
+We analysed the outputs by mapping them to the genome of \textsl{M. tuberculosis} strain CCDC5079 (GenBank: CP001641) and calling the variants as for our patient samples. We found that each simulation generated approximately 25 v-SNPs. The distribution of frequencies and coverages at each variable locus was multimodal showing a great amount of variation. Filtering for repetitive regions and read-end bias simplified the frequency distribution and gave rise to a leptokurtic distribution with a very strong positive skew with all the variants occuring below the frequency of 1\%. The coverage distribution was similarly simplified, resulting in a gaussian distribution, centered around 860-fold coverage. By exploring the relationship between variant frequency and read coverage for filtered v-SNPs resulting from simulation (see \textbf{Figure S2}) we observed that all variation fell on discrete integer error lines. This is a clear indication that the addition of an empirical frequency cut-off would greatly reduce platform-specific spurious minor variants. Specifically introducing a frequency cut-off of 1\% would remove all minor variants resulting from sequencing errors in the coverage range we have within our study.
 
 \subsection{Culture-induced variation}
 We attempted to quantify the extent to which \textsl{in vitro} expansion modifies the population profile of \textsl{M. tuberculosis}. To this end, we picked two separate colonies and cultured them, extracted DNA from each culture and prepared two separate sequencing libraries for each DNA extraction. We sequenced the four resulting libraries to an average depth of approximately 1200-fold and called minor variants using the steps described in \textbf{section 2.1}. Discrepancies between pairs of libraries prepared from a single DNA extraction would provide with data that were analogous to the simulations discussed above. On the other hand any minor variants we observe that do not appear to be sequencing artefact should therefore represent biological variation arising from culture.
 
-Following the removal of repetitive regions and variant calls with read-end bias we identified 288 variable sites across the four sequenced libraries (see table). As with simulated reads, we plotted the relationship of variant frequency and the coverage (see \textbf{Supplementary Figure 3}). Echoing our observations with simulated reads, we found the majority of the v-SNPs to fall on discrete integer error lines for single colonies as well. These therefore match the error profile of sequencing artefacts and should be disregarded. Importantly we also observe a signature of culture expansion changing the profile of the population. Applying an empirical frequency cut-off of 1.5\% reduces the overall rate of false discovery to less than 5\% (6 vs 288 v-SNPs).
+Following the removal of repetitive regions and variant calls with read-end bias we identified 288 variable sites across the four sequenced libraries (see table). As with simulated reads, we plotted the relationship of variant frequency and the coverage (see \textbf{Figure S3}). Echoing our observations with simulated reads, we found the majority of the v-SNPs to fall on discrete integer error lines for single colonies as well. These therefore match the error profile of sequencing artefacts and should be disregarded. Importantly we also observe a signature of culture expansion changing the profile of the population. Applying an empirical frequency cut-off of 1.5\% reduces the overall rate of false discovery to less than 5\% (6 vs 288 v-SNPs).
 
 Five of the six remaining v-SNPs seem to have a comparatively low coverage. From past experience in our labs, regions of the genome that have a comparatively low coverage tend to correspond to loci with problematic read mapping. We therefore performed a manual inspection of the v-SNPs and observed that two pairs of v-SNPs were very close to each other (3 and 183 bp distance) pointing to a potential sequencing artefact. A formal model to define a sequencing coverage cut-off for each v-SNP is beyond the scope of this paper, we therefore chose to apply a 1.5\% frequency cut-off as the final post-call filtering step to the analysis of patient derived sequences.
 
@@ -317,7 +319,7 @@ Five of the six remaining v-SNPs seem to have a comparatively low coverage. From
 \makebox[\linewidth]{%
 	\includegraphics[width=1\textwidth]{../figures/1_single_colony_FreqCov.pdf}}
 \label{fig:supfig3}
-\caption{\textbf{Culture-induced minor variants in MTBC.} We picked two MTBC colonies ("76" and "91"), expanded them in culture, extracated DNA and generated two sequencing libraries from each DNA sample. We processed the resulting sequenicng data as described in \textbf{Section 2.1}. Errors resulting from sequencing artefacts (see \textbf{Supplementary Figure 2}) show a frequency distribution that falls on discrete error lines (dotted lines). The majority of the minor variants detected in single colony samples mirror this distribution. The empirical frequency cut-off of 1.0\% (black dashed line) does not sufficiently well curtail the variability within the samples. A more stringent 1.5\% frequency cut-off (red dashed line) excludes the majority (283/288) of spurious variation that may influence our analysis.}
+\caption{\textbf{Culture-induced minor variants in MTBC.} We picked two MTBC colonies ("76" and "91"), expanded them in culture, extracated DNA and generated two sequencing libraries from each DNA sample. We processed the resulting sequenicng data as described in \textbf{Section 2.1}. Errors resulting from sequencing artefacts (see \textbf{Figure S2}) show a frequency distribution that falls on discrete error lines (dotted lines). The majority of the minor variants detected in single colony samples mirror this distribution. The empirical frequency cut-off of 1.0\% (black dashed line) does not sufficiently well curtail the variability within the samples. A more stringent 1.5\% frequency cut-off (red dashed line) excludes the majority (283/288) of spurious variation that may influence our analysis.}
 \end{figure}
 
 \begin{figure}
@@ -325,14 +327,14 @@ Five of the six remaining v-SNPs seem to have a comparatively low coverage. From
 \makebox[\linewidth]{%
 	\includegraphics[width=1\textwidth]{../figures/1_vSNP_FreqCov.pdf}}
 \label{fig:supfig4}
-\caption{\textbf{Retained minor variants in our patient population.} v-SNPs that were retained for further analysis are shown in grey, while excluded v-SNPs are shown in red. The distribution of retained v-SNPs markedly contrasts that of variants obtained through \emph{in silico} simulations (see \textbf{Supplementary Figure 2}) and those derived from the \emph{in vitro} expansion of single colonies shown in \textbf{Supplementary Figure 3}.}
+\caption{\textbf{Retained minor variants in our patient population.} v-SNPs that were retained for further analysis are shown in grey, while excluded v-SNPs are shown in red. The distribution of retained v-SNPs markedly contrasts that of variants obtained through \emph{in silico} simulations (see \textbf{Figure S2}) and those derived from the \emph{in vitro} expansion of single colonies shown in \textbf{Figure S3}.}
 \end{figure}
 
 \newpage
 
 \section{Demographic indicators of bacterial killing}
-Given that all but two of the patients included in our study successfully achieved clinical cure, we reasoned that we should be able to recapitulate the clinical outcome by looking at the dynamics of the bacterial population. In order to define the expected dynamics that would arise from efficacious treatment we turned to in silico forward-time simulations of bacterial populations \cite{simuPOP}. We constructed a demographic model that would recapitulate key aspects of the natural history of MTBC infection - see \textbf{Supplementary Figure 5A}. We expect that MTBC underwent an exponential expansion, following the initial infection, until it reached a carrying capacity and a density conducive to the onset of clinical symptoms \cite{Lawn2010}. The population should then undergo a treatment-induced exponential decrease \cite{EBA}. In this context, each sputum sample represents a sampling bottleneck that is followed by a second phase of exponential growth as bacteria are grown in culture vials in preparation for genomic DNA extraction.
-We wanted to simulate the simplest scenario where the dynamics of rare alleles are governed entirely by chance so that any observed deviations in our data from the predicted trends would imply the involvement of underlying evolutionary processes. The simulation is based on the segregation of two alleles at a single genetic locus. In our scenario the two alleles had the same relative fitness but different starting frequencies - a rare allele at 5\% and a frequent allele at 95\%. The introduction of additional alleles or additional segregating loci was prevented by not allowing mutational events. We consider the outcome of each simulation to be analogous to the fate of an allele within the population. We varied the time at which virtual sampling occurred as illustrated in \textbf{Supplementary Figure 5A} to interrogate the temporal dynamics within our system. The analysis of the trends across all of our simulations provided a context similar to that of a bacterial population within a host over time.
+Given that all but two of the patients included in our study successfully achieved clinical cure, we reasoned that we should be able to recapitulate the clinical outcome by looking at the dynamics of the bacterial population. In order to define the expected dynamics that would arise from efficacious treatment we turned to in silico forward-time simulations of bacterial populations \cite{simuPOP}. We constructed a demographic model that would recapitulate key aspects of the natural history of MTBC infection - see \textbf{Figure S5A}. We expect that MTBC underwent an exponential expansion, following the initial infection, until it reached a carrying capacity and a density conducive to the onset of clinical symptoms \cite{Lawn2010}. The population should then undergo a treatment-induced exponential decrease \cite{EBA}. In this context, each sputum sample represents a sampling bottleneck that is followed by a second phase of exponential growth as bacteria are grown in culture vials in preparation for genomic DNA extraction.
+We wanted to simulate the simplest scenario where the dynamics of rare alleles are governed entirely by chance so that any observed deviations in our data from the predicted trends would imply the involvement of underlying evolutionary processes. The simulation is based on the segregation of two alleles at a single genetic locus. In our scenario the two alleles had the same relative fitness but different starting frequencies - a rare allele at 5\% and a frequent allele at 95\%. The introduction of additional alleles or additional segregating loci was prevented by not allowing mutational events. We consider the outcome of each simulation to be analogous to the fate of an allele within the population. We varied the time at which virtual sampling occurred as illustrated in \textbf{Figure S5A} to interrogate the temporal dynamics within our system. The analysis of the trends across all of our simulations provided a context similar to that of a bacterial population within a host over time.
 
 We focused on two parameters of the population: the \emph{frequency of persistent alleles} and \emph{heterozygosity}. Heterozygosity $H$ was defined as in \cite{Cuevas2015} and was calculated as:
 
@@ -348,7 +350,7 @@ Where $h_l$ is the heterozygosity at locus $l$, $f_{il}$ is the frequency of the
 
 The values of the parameters were calculated by resampling the population of interest with replacement (bootstrapping) 1000-times and then plotting the mean of the calculated outcomes together with the empirical 95\% confidence interval which we define with the \nth{25} and \nth{975} permille of the re-sampled results. In the case of the mean allele frequencies, we performed a ordinary linear regression of the $log_2$ of the mean frequency over time or generation.
 
-We observed that, according to expectation, the heterozygosity of the simulated population decreases over time, while the mean frequency of the rare alleles, in cases where the rare allele was present at the end of the simulation, increases over time. The demographic dynamics in MTBC populations from patients treated with at least 4 effective drugs followed the same trends, while those from patients treated with fewer than 4 effective drugs did not (see \textbf{Supplementary Figure 5B-E}). We therefore conclude that our measured dynamics are biologically relevant and reflect the expected trends of bacterial populations undergoing extinction. Interestingly we observed that the relationship between the $log_2$ of the mean allele frequency and time/generations is exponential in the case of the simulations while it appears to be linear in the case of the treated patients. This may be an indication of the fact that the rate of killing within patients does not follow the dynamics of exponential decay, but rather decreases at a slower rate.
+We observed that, according to expectation, the heterozygosity of the simulated population decreases over time, while the mean frequency of the rare alleles, in cases where the rare allele was present at the end of the simulation, increases over time. The demographic dynamics in MTBC populations from patients treated with at least 4 effective drugs followed the same trends, while those from patients treated with fewer than 4 effective drugs did not (see \textbf{Figure S5B-E}). We therefore conclude that our measured dynamics are biologically relevant and reflect the expected trends of bacterial populations undergoing extinction. Interestingly we observed that the relationship between the $log_2$ of the mean allele frequency and time/generations is exponential in the case of the simulations while it appears to be linear in the case of the treated patients. This may be an indication of the fact that the rate of killing within patients does not follow the dynamics of exponential decay, but rather decreases at a slower rate.
 
 \begin{figure}
 \centering
@@ -404,7 +406,7 @@ We observed that, according to expectation, the heterozygosity of the simulated 
 
 \section{Phylogenetic analysis of patient isolates}
 \subsection{Methodology}
-We collated 13,359 fixed SNPs (>95\%) called against the CCDC5079 genome from 42 MTBC isolates. These included the 12 clinical isolates in this study and 30 representative MTBC isolates from publicly available databases \cite{Comas_tree}. The concatenated sequences of the 42 isolates were used to generate a Maximum Likelihood (ML) phylogeny tree with MEGA6 \cite{MEGA}. We used the Tamura-Nei nucleotide substitution model for phylogeny reconstruction, excluding nucleotide positions with gaps/missing data in more than 30\% of the aligned taxa. We tested the robustness of the phylogeny with 500 bootstrap replications. The phylogeny tree was further visualized in FigTree(v1.4.2) - see \textbf{Supplementary Figure 11}.
+We collated 13,359 fixed SNPs (>95\%) called against the CCDC5079 genome from 42 MTBC isolates. These included the 12 clinical isolates in this study and 30 representative MTBC isolates from publicly available databases \cite{Comas_tree}. The concatenated sequences of the 42 isolates were used to generate a Maximum Likelihood (ML) phylogeny tree with MEGA6 \cite{MEGA}. We used the Tamura-Nei nucleotide substitution model for phylogeny reconstruction, excluding nucleotide positions with gaps/missing data in more than 30\% of the aligned taxa. We tested the robustness of the phylogeny with 500 bootstrap replications. The phylogeny tree was further visualized in FigTree(v1.4.2) - see \textbf{Figure S11}.
 
 \subsection{Majority of study isolates belong to the Beijing family}
 Using the charcterisation of sublineages defined previously \cite{COLL} we determined that the reference strain CCDC5079 mutation belongs to the 2.2.1 sublineage of Lineage 2. This classification is based on the presence of 2505070 GA (equivalent to 2505085 GA in H37Rv numbering) and 796659 CT (equivalent to 797736 CT in H37Rv numbering)  In addition to these SNPs, it also carries deletions RD105, RD207 and RD181, all of which are consistent with the classification. The majority (10/12) of the strains from our patients belong to the same sublineage as CCDC5079. The only exceptions are the strain from Patient11, which belongs to sublineage 2.2.2 -- based on the presence of 345104 GT (equivalent to 346693 GT in H37Rv numbering).
@@ -433,7 +435,7 @@ All the data and analysis scripts used during this project are available from:
 \noindent A subset of these, containing summarised data are included with the manuscript - see the descriptions below.
 
 \subsection{Patient data}
-All clinical patient data are given in the \textbf{Supplementary\_data1.csv} also available as "PATIENT\_data.csv" on the repository.
+All clinical patient data are given in the \textbf{Table\_S6.csv} also available as "PATIENT\_data.csv" on the repository.
 The categories in this file are coded as follows:
 \begin{itemize}
 \item \textbf{DRUG}: Drug susceptibility profile of patient
@@ -456,7 +458,7 @@ The categories in this file are coded as follows:
 \end{itemize}
 
 \subsection{v-SNP data}
-All collected and calculated data for all v-SNPs are given in the \textbf{Supplementary\_data2.csv} also available as "ALLELE\_data.csv" on the repository.
+All collected and calculated data for all v-SNPs are given in the \textbf{Table\_S7.csv} also available as "ALLELE\_data.csv" on the repository.
 The categories in this file are coded as follows:
 \begin{itemize}
 \item \textbf{PATIENT\_ID}: Patient ID
@@ -474,7 +476,7 @@ The categories in this file are coded as follows:
 \end{itemize}
 
 \subsection{f-SNP data}
-All collected and calculated data for all f-SNPs are given in the \textbf{Supplementary\_data3.csv} also available as "FIXED\_ALLELE\_data.csv" on the repository.
+All collected and calculated data for all f-SNPs are given in the \textbf{Table\_S8.csv} also available as "FIXED\_ALLELE\_data.csv" on the repository.
 The categories in this file are coded as follows:
 \begin{itemize}
 \item \textbf{PATIENT\_ID}: Patient ID
@@ -488,7 +490,7 @@ The categories in this file are coded as follows:
 \end{itemize}
 
 \subsection{Predefined Genesets}
-Genesets used for mutation enrichment analysis are listed in \textbf{Supplementary\_data4.csv} also available as "PREDEFINED\_gene\_sets.csv" on the repository.
+Genesets used for mutation enrichment analysis are listed in \textbf{Table\_S9.csv} also available as "PREDEFINED\_gene\_sets.csv" on the repository.
 The categories in this file are coded as follows:
 \begin{itemize}
 \item \textbf{GENE}: ID tag of gene (H37Rv, CDS only)
